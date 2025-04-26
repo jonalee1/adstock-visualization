@@ -3,6 +3,8 @@ import './App.css';
 import AdstockModelVisualization from './components/AdstockModelVisualization';
 import WeibullAdstockVisualization from './components/WeibullAdstockVisualization';
 import SaturationVisualization from './components/SaturationVisualization';
+import SaturationHillVisualization from './components/SaturationHillVisualization';
+import SaturationModelsVisualization from './components/SaturationModelsVisualization';
 
 function App() {
   const [activeTab, setActiveTab] = useState('geometric');
@@ -31,6 +33,18 @@ function App() {
         >
           Saturation Effects
         </button>
+        <button 
+          className={`py-2 px-4 ${activeTab === 'hill' ? 'border-b-2 border-blue-500 font-bold' : ''}`}
+          onClick={() => setActiveTab('hill')}
+        >
+          Hill Saturation
+        </button>
+        <button 
+          className={`py-2 px-4 ${activeTab === 'comparison' ? 'border-b-2 border-blue-500 font-bold' : ''}`}
+          onClick={() => setActiveTab('comparison')}
+        >
+          Saturation Models
+        </button>
       </div>
       
       {/* Visualization Container */}
@@ -38,6 +52,8 @@ function App() {
         {activeTab === 'geometric' && <AdstockModelVisualization />}
         {activeTab === 'weibull' && <WeibullAdstockVisualization />}
         {activeTab === 'saturation' && <SaturationVisualization />}
+        {activeTab === 'hill' && <SaturationHillVisualization />}
+        {activeTab === 'comparison' && <SaturationModelsVisualization />}
       </div>
     </div>
   );
